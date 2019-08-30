@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<script src="js/slider.js"></script>
+	<meta charset="UTF-8">
+	<title>Alerts — TipAlerts</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/animation.css">
+	<link rel="stylesheet" href="css/animationKeyframes.css">
+	<link rel="stylesheet" href="css/animMoveKeyframes.css">
+	<link rel="stylesheet" href="css/animFadeKeyframes.css">
+	<link rel="stylesheet" href="css/preview.css">
+
+</head>
+
+<body>
+	
+
+	<div style="display: flex; justify-content: center; flex-grow: 1;">
+		<div class="container">
+
+			<div class="preset-content">
+				
+				<div id="previews-container">
+
+					<div class="preview-wrapper">
+						<div class="module-36"><h3>Preview 1440x900</h3></div>
+						<div class="preview" id="preview-1440-900">
+							
+						</div>
+					</div>
+
+					<div class="preview-wrapper">
+						<div class="module-36"><h3>Preview 1280x720</h3></div>
+						<div class="preview" id="preview-1280-720">
+							
+							<!-- <div id="mover">
+								<div id="appearance">
+									<div id="fade">
+										<div class="preview-image">
+											<div>100</div>
+											<div>Alex</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+
+							<!-- <div class="preview-progress-bar-fill" id="preview-progress-bar-fill"></div> -->
+							<div class="preview-progress-bar-empty"></div>
+						</div>
+
+					</div>
+
+					
+
+					<div class="preview-wrapper">
+						<div class="module-36"><h3>Preview 800x600</h3></div>
+						<div class="preview" id="preview-800-600">
+							<!-- <div class="mover">
+								<div class="appearance">
+									<div class="fade">
+										<div class="preview-image">
+											<div>100</div>
+											<div>Alex</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+						</div>
+					</div>
+
+					<div class="preview-wrapper">
+						<div class="module-36"><h3>Preview 640x480</h3></div>
+						<div class="preview" id="preview-640-480">
+							<!-- <div class="mover">
+								<div class="appearance">
+									<div class="fade">
+										<div class="preview-image">
+											<div>100</div>
+											<div>Alex</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="settings">
+
+
+					<div class="settings-tab-content">
+						
+							
+
+							<div id="alerts-settings-preset-content" class="settings-content" style="flex-direction: column;">
+
+								<section class="preset-settings-section">
+									<div class="module-36 settings-section-header no-border"><span>Animation</span></div>
+
+									<div class="module-36 row" style="align-items: center; display: none;" id="duration-slider-container">
+										<span class="col-3 row-title">Duration, sec</span>
+										<div class="col-9" style="align-items: center; display: flex; flex-direction: row;">
+											<div class="slider-container">
+												<input type="range" min="2" max="60" value="4" class="newSlider" id="anim-duration-slider">
+												<div class="slider-bar-empty"></div>
+												<div class="slider-bar-fill"></div>
+											</div>
+											<input type="number" class="slider-input" value="30">
+										</div>
+									</div>
+								
+									<div>
+										
+											<div class="anim-presets-wrapper" id="anim-pickers-wrapper">
+
+											</div>
+										
+										
+									</div>
+
+								</section>
+
+
+							</div>
+						
+
+
+						
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script src="index.js"></script>
+	<script src="js/slider.js"></script>
+	<script src="js/alerts/durationMode.js"></script>
+	<script src="js/animPresetsPicker.js"></script>
+	<script src="js/animation.js"></script>
+
+</body>
+</html>
