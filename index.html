@@ -26,10 +26,43 @@
 				
 				<div id="previews-container">
 
+					
+
+					
+
+					
+
+					
+
 					<div class="preview-wrapper">
-						<div class="module-36"><h3>Preview 1440x900</h3></div>
-						<div class="preview" id="preview-1440-900">
-							
+						<div class="module-36"><h3>Preview 640x480</h3></div>
+						<div class="preview" id="preview-640-480">
+							<!-- <div class="mover">
+								<div class="appearance">
+									<div class="fade">
+										<div class="preview-image">
+											<div>100</div>
+											<div>Alex</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
+						</div>
+					</div>
+
+					<div class="preview-wrapper">
+						<div class="module-36"><h3>Preview 800x600</h3></div>
+						<div class="preview" id="preview-800-600">
+							<!-- <div class="mover">
+								<div class="appearance">
+									<div class="fade">
+										<div class="preview-image">
+											<div>100</div>
+											<div>Alex</div>
+										</div>
+									</div>
+								</div>
+							</div> -->
 						</div>
 					</div>
 
@@ -51,42 +84,21 @@
 							<!-- <div class="preview-progress-bar-fill" id="preview-progress-bar-fill"></div> -->
 							<div class="preview-progress-bar-empty"></div>
 						</div>
-
 					</div>
 
-					
-
 					<div class="preview-wrapper">
-						<div class="module-36"><h3>Preview 800x600</h3></div>
-						<div class="preview" id="preview-800-600">
-							<!-- <div class="mover">
-								<div class="appearance">
-									<div class="fade">
-										<div class="preview-image">
-											<div>100</div>
-											<div>Alex</div>
-										</div>
-									</div>
-								</div>
-							</div> -->
+						<div class="module-36"><h3>Preview 1440x900</h3></div>
+						<div class="preview" id="preview-1440-900">
+							
 						</div>
 					</div>
 
 					<div class="preview-wrapper">
-						<div class="module-36"><h3>Preview 640x480</h3></div>
-						<div class="preview" id="preview-640-480">
-							<!-- <div class="mover">
-								<div class="appearance">
-									<div class="fade">
-										<div class="preview-image">
-											<div>100</div>
-											<div>Alex</div>
-										</div>
-									</div>
-								</div>
-							</div> -->
+						<div class="module-36"><h3>Preview 1920x1080</h3></div>
+						<div class="preview" id="preview-1920-1080">
 						</div>
 					</div>
+
 				</div>
 
 				<div class="settings">
@@ -101,17 +113,11 @@
 								<section class="preset-settings-section">
 									<div class="module-36 settings-section-header no-border"><span>Animation</span></div>
 
-									<div class="module-36 row" style="align-items: center; display: none;" id="duration-slider-container">
-										<span class="col-3 row-title">Duration, sec</span>
-										<div class="col-9" style="align-items: center; display: flex; flex-direction: row;">
-											<div class="slider-container">
-												<input type="range" min="2" max="60" value="4" class="newSlider" id="anim-duration-slider">
-												<div class="slider-bar-empty"></div>
-												<div class="slider-bar-fill"></div>
-											</div>
-											<input type="number" class="slider-input" value="30">
-										</div>
+									<div class="module-60">
+										<span class="row-title">Duration, sec</span>
+										<input type="number" min="2" max="60" value="4" id="anim-duration-input">
 									</div>
+									
 								
 									<div>
 										
@@ -120,6 +126,65 @@
 											</div>
 										
 										
+									</div>
+
+									<div>
+
+										<span>Move animation timing function</span>									
+										<label for="linear" class="checkbox-container">
+											<input type="radio" id="linear" name="timing-function" value="linear" class="timing-func-radio">
+											<span class="radio"></span>
+											<span class="checkbox-text">Linear</span>
+										</label>
+
+										<label for="ease" class="checkbox-container">
+											<input type="radio" id="ease" name="timing-function" value="ease"  checked="true"  class="timing-func-radio">
+											<span class="radio"></span>
+											<span class="checkbox-text">Ease</span>
+										</label>
+
+										<label for="ease-in" class="checkbox-container">
+											<input type="radio" id="ease-in" name="timing-function" value="ease-in" class="timing-func-radio">
+											<span class="radio"></span>
+											<span class="checkbox-text">Ease In</span>
+										</label>
+
+										<label for="ease-out" class="checkbox-container">
+											<input type="radio" id="ease-out" name="timing-function" value="ease-out" class="timing-func-radio">
+											<span class="radio"></span>
+											<span class="checkbox-text">Ease Out</span>
+										</label>
+
+										<label for="ease-in-out" class="checkbox-container">
+											<input type="radio" id="ease-in-out" name="timing-function" value="ease-in-out" class="timing-func-radio">
+											<span class="radio"></span>
+											<span class="checkbox-text">Ease In Out</span>
+										</label>
+
+									</div>
+
+									<div style="margin-top: 36px;">
+
+										<span>Move waves</span>	
+
+										<label for="waves-none" class="checkbox-container">
+											<input type="radio" id="waves-none" name="move-waves" value="" class="move-waves-radio" checked="true">
+											<span class="radio"></span>
+											<span class="checkbox-text">None</span>
+										</label>
+
+										<label for="waves-x" class="checkbox-container">
+											<input type="radio" id="waves-x" name="move-waves" value="wavesX" class="move-waves-radio">
+											<span class="radio"></span>
+											<span class="checkbox-text">X-waves</span>
+										</label>
+
+										<label for="waves-y" class="checkbox-container">
+											<input type="radio" id="waves-y" name="move-waves" value="wavesY" class="move-waves-radio">
+											<span class="radio"></span>
+											<span class="checkbox-text">Y-waves</span>
+										</label>
+
 									</div>
 
 								</section>

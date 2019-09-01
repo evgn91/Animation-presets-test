@@ -8,10 +8,10 @@
 	overflow-y: scroll;
 	background-color: #1D272E;
 	position: absolute;
-	top: 218px;
-	left: 878px;
+	top: 36px;
+	left: calc(100vw - 652px - 36px);
 	width: 652px;
-	height: calc(751px - 36px);
+	height: calc(100vh - 72px);
 	z-index: 9999;
 	padding: 6px 16px 16px 16px;
 	box-sizing: border-box;
@@ -257,12 +257,18 @@
 	position: relative;
 }
 
-.mover{
+.move-container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/*.mover{
 	position: absolute;
 	top: calc(50% - 72px);
 	left: calc(50% - 72px);
 	animation-timing-function: linear;
-}
+}*/
 
 .appearance{
 	position: absolute;

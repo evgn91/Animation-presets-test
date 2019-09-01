@@ -1,11 +1,18 @@
 #previews-container{
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
 	overflow-y: scroll;
 	height: 100vh;
 	width: calc(100vw - 280px);
 	box-sizing: border-box;
 	padding: 24px;
+}
+
+#preview-1920-1080{
+	width: 1920px;
+	height: 1080px;
 }
 
 #preview-1440-900{
