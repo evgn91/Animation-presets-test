@@ -5,8 +5,10 @@
 }
 
 .anim-presets-picker{
-	overflow-y: scroll;
-	background-color: #1D272E;
+	/*overflow-y: scroll;*/
+	overflow: hidden;
+	background-color: hsla(205, 26%, 10%, 1);
+	/*backdrop-filter: blur(20px);*/
 	position: absolute;
 	top: 36px;
 	left: calc(100vw - 652px - 36px);
@@ -16,6 +18,9 @@
 	padding: 6px 16px 16px 16px;
 	box-sizing: border-box;
 	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 	/*animation-duration: .2s;
 	animation-name: presetsPickerSlide;
 	animation-fill-mode: forwards;
@@ -49,10 +54,23 @@
 	grid-gap: 8px;
 }
 
+.scroll-container{
+	overflow-y: scroll;
+	width: 100%;
+}
+
+.scroll-container::-webkit-scrollbar{
+	display: none;
+}
+
 .anim-presets-picker-item{
 	width: 100%;
 	height: 108px;
+	transition: all .275s ease;
+}
 
+.anim-presets-picker-item:active{
+	transform: scale(.95);
 }
 
 .anim-preset-item-wrapper{
@@ -65,9 +83,9 @@
 
 .anim-presets-picker-item > div:first-child{
 	overflow: hidden;
-	height: 84px;
+	height: 85px;
 	width: 100%;
-	background-color: rgba(255,255,255,0.06);
+	background-color: rgba(255,255,255,0.03);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -76,15 +94,31 @@
 	position: relative;
 }
 
-.anim-presets-picker-item > span{
-	font-size: 14px;
-	line-height: 20px;
+.anim-preset-picker-item-title-wrapper{
+	height: 24px;
+	width: 100%;
+	background-color: rgba(255,255,255,0.03);
+	border-radius: 0px 0px 4px 4px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 1px;
+}
+
+.anim-preset-picker-item-title{
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 16px;
 	transition: all .275s ease;
 }
 
 .anim-preview-progress-bar{
 	background-color: white;
-	height: 2px;
+	position: absolute;
+	top: calc(100% - 1px);
+	left: 0%;
+	height: 1px;
 	width: 0%;
 	margin-bottom: 4px;
 	animation-iteration-count: infinite;
@@ -457,4 +491,13 @@
 	25% {left: 0%;}
 	50% {left: calc(0% + 72px);}
 	100%{left: 0%;}
+}
+
+@keyframes pickerAppearance{
+	from{
+		transform: scaleY();
+	}
+	to{
+		transform: scaleY();
+	}
 }

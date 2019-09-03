@@ -1,6 +1,6 @@
 let durationInput = document.getElementById('anim-duration-input');
 let animDuration = Number(durationInput.value) * 1000;
-let fadeDuration = 1000;
+//let fadeDuration = 1000;
 
 let moveTimingFunc = 'ease';
 let moveTimingFuncRadios = document.getElementsByClassName('timing-func-radio');
@@ -35,8 +35,10 @@ function renderPreview(parentContainer, parentWidth, parentHeight){
 	let wavesXContainer = document.createElement('div');
 	let baseContainer = document.createElement('div');
 
-	appearanceContainer.style.animationName = animCurrent.appearance;
-	appearanceContainer.style.animationDuration = '1s';
+	let fadeDuration = parseFloat(animCurrent.fade.duration) * 1000;
+
+	appearanceContainer.style.animationName = animCurrent.appearance.preset;
+	appearanceContainer.style.animationDuration = animCurrent.appearance.duration;
 	appearanceContainer.style.position = 'absolute';
 	appearanceContainer.style.left = '0%';
 	appearanceContainer.style.top = '0%';
@@ -46,7 +48,7 @@ function renderPreview(parentContainer, parentWidth, parentHeight){
 	appearanceContainer.style.transformOrigin = '72px 72px 0px';
 	//appearanceContainer.style.border = '3px dashed gold';
 
-	moveContainer.style.animationName = animCurrent.move;
+	moveContainer.style.animationName = animCurrent.move.preset;
 	moveContainer.style.animationDuration = animDuration / 1000 + 's';
 	moveContainer.style.position = 'absolute';
 	moveContainer.style.left = 'calc(50% - 72px)';
@@ -58,8 +60,9 @@ function renderPreview(parentContainer, parentWidth, parentHeight){
 	moveContainer.classList.add('move-container');
 	//moveContainer.style.backgroundColor = 'green';
 
-	fadeContainer.style.animationName = animCurrent.fade;
-	fadeContainer.style.animationDuration = fadeDuration / 1000 + 's';
+	fadeContainer.style.animationName = animCurrent.fade.preset;
+	fadeContainer.style.animationDuration = animCurrent.fade.duration;
+	
 	fadeContainer.style.animationDelay = (animDuration - fadeDuration) / 1000 + 's';
 	fadeContainer.style.transformOrigin = '72px 72px 0px';
 	fadeContainer.style.position = 'absolute';

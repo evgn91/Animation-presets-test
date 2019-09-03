@@ -36,6 +36,7 @@ let appearancePresetsNew = ['Select appearance animation',
 											}
 								],
 								previewSample: 'preview-heart-red.png',
+								color: '#FF8080',
 							},
 
 							{
@@ -79,7 +80,7 @@ let appearancePresetsNew = ['Select appearance animation',
 
 											{
 												anim: 'fadeInRightBig',
-												title: 'Fade In RightBig',
+												title: 'Fade In Right Big',
 												target: 'appearance'
 											},
 
@@ -96,6 +97,124 @@ let appearancePresetsNew = ['Select appearance animation',
 											}
 								],
 								previewSample: 'preview-heart-turquoise.png',
+								color: '#86FFE9',
+							},
+
+							{
+								title: 'Flip entrances',
+								presets: [
+											{
+												anim: 'flipInX',
+												title: 'Flip In X',
+												target: 'appearanceCenter'
+											},
+
+											{
+												anim: 'flipInY',
+												title: 'Flip In Y',
+												target: 'appearanceCenter'
+											},
+											
+								],
+								previewSample: 'preview-heart-turquoise.png',
+								color: '#86FFE9',
+							},
+
+							{
+								title: 'Pop entrances',
+								presets: [
+											{
+												anim: 'popIn',
+												title: 'Pop In',
+												target: 'appearance',
+												duration: '1s',
+											},
+
+											{
+												anim: 'popInLeft',
+												title: 'Pop In Left',
+												target: 'appearance',
+												duration: '1s',
+											},
+
+											{
+												anim: 'popInRight',
+												title: 'Pop In Right',
+												target: 'appearance',
+												duration: '1s',
+											},
+
+											{
+												anim: 'popInTop',
+												title: 'Pop In Top',
+												target: 'appearance',
+												duration: '1s',
+											},
+
+											{
+												anim: 'popInBottom',
+												title: 'Pop In Bottom',
+												target: 'appearance',
+												duration: '1s',
+											}
+								],
+								previewSample: 'preview-heart-turquoise.png',
+								color: '#86FFE9',
+							},
+
+							{
+								title: 'Swoop entrances',
+								presets: [
+											{
+												anim: 'swoopInLeft',
+												title: 'Swoop In Left',
+												target: 'appearance',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'swoopInRight',
+												title: 'Swoop In Right',
+												target: 'appearance',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'swoopInTop',
+												title: 'Swoop In Top',
+												target: 'appearance',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'swoopInBottom',
+												title: 'Swoop In Bottom',
+												target: 'appearance',
+												duration: '.5s',
+											}
+								],
+								previewSample: 'preview-heart-turquoise.png',
+								color: '#86FFE9',
+							},
+
+							{
+								title: 'Jump entrances',
+								presets: [
+											{
+												anim: 'jumpInLeft',
+												title: 'Jump In Left',
+												target: 'appearance',
+											},
+
+											{
+												anim: 'jumpInRight',
+												title: 'Jump In Right',
+												target: 'appearance',
+											},
+								],
+
+								previewSample: 'preview-heart-turquoise.png',
+								color: '#86FFE9',
 							},
 
 							{
@@ -126,6 +245,7 @@ let appearancePresetsNew = ['Select appearance animation',
 											}
 								],
 								previewSample: 'preview-heart-orange.png',
+								color: '#FFCD8D',
 							},
 
 							{
@@ -162,6 +282,7 @@ let appearancePresetsNew = ['Select appearance animation',
 											}
 								],
 								previewSample: 'preview-heart-purple.png',
+								color: '#E3B5FF',
 							},
 
 							{
@@ -198,22 +319,44 @@ let appearancePresetsNew = ['Select appearance animation',
 											}
 								],
 								previewSample: 'preview-heart-green.png',
+								color: '#CDFF63',
+							},
+
+							{
+								title: 'Pull entrances',
+								presets: [
+											{
+												anim: 'pullUp',
+												title: 'Pull Up',
+												target: 'appearance'
+											},
+
+											{
+												anim: 'pullDown',
+												title: 'Pull Down',
+												target: 'appearance'
+											},
+
+											{
+												anim: 'pullLeft',
+												title: 'Pull Left',
+												target: 'appearance'
+											},
+
+											{
+												anim: 'pullRight',
+												title: 'Pull Right',
+												target: 'appearance'
+											}
+
+								],
+								previewSample: 'preview-heart-green.png',
+								color: '#CDFF63',
 							},
 
 							{
 								title: 'Other',
 								presets: [
-											{
-												anim: 'flipInX',
-												title: 'Flip In X',
-												target: 'appearanceCenter'
-											},
-
-											{
-												anim: 'flipInY',
-												title: 'Flip In Y',
-												target: 'appearanceCenter'
-											},
 
 											{
 												anim: 'lightSpeedIn',
@@ -231,9 +374,28 @@ let appearancePresetsNew = ['Select appearance animation',
 												anim: 'rollIn',
 												title: 'Roll In',
 												target: 'appearance'
+											},
+
+											{
+												anim: 'unfold',
+												title: 'Unfold',
+												target: 'appearance'
+											},
+
+											{
+												anim: 'blink',
+												title: 'Blink',
+												target: 'appearance'
+											},
+
+											{
+												anim: 'spinIn',
+												title: 'Spin In',
+												target: 'fadeCenter'
 											}
 								],
 								previewSample: 'preview-heart-blue.png',
+								color: '#C6E4FF',
 							},
 ];
 
@@ -273,6 +435,7 @@ let fadePresetsNew = ['Select fade animation',
 											}
 								],
 								previewSample: 'preview-heart-red.png',
+								color: '#FFCD8D',
 							},
 
 							{
@@ -333,6 +496,124 @@ let fadePresetsNew = ['Select fade animation',
 											}
 								],
 								previewSample: 'preview-heart-turquoise.png',
+								color: '#FFCD8D',
+							},
+
+							{
+								title: 'Flip exits',
+								presets: [
+											{
+												anim: 'flipOutX',
+												title: 'Flip Out X',
+												target: 'fadeCenter'
+											},
+
+											{
+												anim: 'flipOutY',
+												title: 'Flip Out Y',
+												target: 'fadeCenter'
+											},
+											
+								],
+								previewSample: 'preview-heart-turquoise.png',
+								color: '#86FFE9',
+							},
+
+							{
+								title: 'Pop exits',
+								presets: [
+											{
+												anim: 'popOut',
+												title: 'Pop Out',
+												target: 'fade',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'popOutLeft',
+												title: 'Pop Out Left',
+												target: 'fade',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'popOutRight',
+												title: 'Pop Out Right',
+												target: 'fade',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'popOutTop',
+												title: 'Pop Out Top',
+												target: 'fade',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'popOutBottom',
+												title: 'Pop Out Bottom',
+												target: 'fade',
+												duration: '.5s',
+											}
+								],
+								previewSample: 'preview-heart-turquoise.png',
+								color: '#FFCD8D',
+							},
+
+							{
+								title: 'Swoop exits',
+								presets: [
+											{
+												anim: 'swoopOutLeft',
+												title: 'Swoop Out Left',
+												target: 'fade',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'swoopOutRight',
+												title: 'Swoop Out Right',
+												target: 'fade',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'swoopOutTop',
+												title: 'Swoop Out Top',
+												target: 'fade',
+												duration: '.5s',
+											},
+
+											{
+												anim: 'swoopOutBottom',
+												title: 'Swoop Out Bottom',
+												target: 'fade',
+												duration: '.5s',
+											}
+								],
+								previewSample: 'preview-heart-turquoise.png',
+								color: '#FFEF9F',
+							},
+
+							{
+								title: 'Jump exits',
+								presets: [
+											{
+												anim: 'jumpOutLeft',
+												title: 'Jump Out Left',
+												target: 'fade',
+											},
+
+											{
+												anim: 'jumpOutRight',
+												title: 'Jump Out Right',
+												target: 'fade',
+											},
+								],
+
+								previewSample: 'preview-heart-turquoise.png',
+								color: '#FFEF9F',
 							},
 
 							{
@@ -363,6 +644,7 @@ let fadePresetsNew = ['Select fade animation',
 											}
 								],
 								previewSample: 'preview-heart-orange.png',
+								color: '#FFCD8D',
 							},
 
 							{
@@ -399,6 +681,7 @@ let fadePresetsNew = ['Select fade animation',
 											}
 								],
 								previewSample: 'preview-heart-purple.png',
+								color: '#FFCD8D',
 							},
 
 							{
@@ -435,22 +718,12 @@ let fadePresetsNew = ['Select fade animation',
 											}
 								],
 								previewSample: 'preview-heart-green.png',
+								color: '#FFCD8D',
 							},
 
 							{
 								title: 'Other Exits',
 								presets: [
-											{
-												anim: 'flipOutX',
-												title: 'Flip Out X',
-												target: 'fadeCenter'
-											},
-
-											{
-												anim: 'flipOutY',
-												title: 'Flip Out Y',
-												target: 'fadeCenter'
-											},
 
 											{
 												anim: 'lightSpeedOut',
@@ -468,9 +741,23 @@ let fadePresetsNew = ['Select fade animation',
 												anim: 'rollOut',
 												title: 'Roll Out',
 												target: 'fade'
+											},
+
+											{
+												anim: 'fold',
+												title: 'Fold',
+												target: 'fadeCenter'
+											},
+
+											{
+												anim: 'spinOut',
+												title: 'Spin Out',
+												target: 'fadeCenter'
 											}
+
 								],
 								previewSample: 'preview-heart-blue.png',
+								color: '#FFCD8D',
 							},
 
 ];
@@ -507,6 +794,7 @@ let movePresetsNew = ['Select move animation',
 								
 										],
 								previewSample: 'preview-heart-white.png',
+								color: '#FFCD8D',
 							},
 
 							{
@@ -539,6 +827,7 @@ let movePresetsNew = ['Select move animation',
 								
 										],
 								previewSample: 'preview-heart-red.png',
+								color: '#FFCD8D',
 							},
 
 							{
@@ -571,6 +860,7 @@ let movePresetsNew = ['Select move animation',
 								
 										],
 								previewSample: 'preview-heart-turquoise.png',
+								color: '#FFCD8D',
 							},
 
 							{
@@ -603,6 +893,7 @@ let movePresetsNew = ['Select move animation',
 								
 										],
 								previewSample: 'preview-heart-orange.png',
+								color: '#FFCD8D',
 							}
 						];
 
@@ -640,11 +931,32 @@ let pickerModalScrollOffset = {
 };
 
 let animCurrent = {
-					appearance: animAppearanceDefault.preset,
-					move: animMoveDefault.preset,
-					fade: animFadeDefault.preset,
-					appearanceCenter: animBaseDefault.preset,
-					fadeCenter: animBaseDefault.preset,
+
+					appearance: 		{
+											preset: animAppearanceDefault.preset,
+											duration: '1s',
+										},
+
+					move: 				{	
+											preset: animMoveDefault.preset,
+											duration: null,
+										},	
+
+					fade: 				{
+											preset: animFadeDefault.preset,
+											duration: '1s',
+										},
+
+					appearanceCenter: 	{
+											preset: animBaseDefault.preset,
+											duration: '1s',
+										},
+
+					fadeCenter: 		{
+											preset: animBaseDefault.preset,
+											duration: '1s',
+										},
+
 					waves: ''
 };
 
@@ -700,15 +1012,21 @@ let previewImgTimeout;
 let activeModal;
 let activePicker;
 
-var animSetPreset = function( preset, animPhase, control ){
+var animSetPreset = function( preset, title, animPhase, control, duration ){
 
 	return function(){
 
 				clearTimeout(animRemoveTimeout);
 				clearTimeout(animCycleTimeout);
 
-				animCurrent[animPhase] = preset;
-				control.title.innerHTML = preset;
+				animCurrent[animPhase].preset = preset;
+				if( duration && animPhase != 'move' ){
+					animCurrent[animPhase].duration = duration;
+				}
+				else if( animPhase != 'move' ){
+					animCurrent[animPhase].duration = '1s';	
+				}
+				control.title.innerHTML = title;
 				clearTimeout(previewImgTimeout);
 				activeModal.remove();
 				activeModal = null;
@@ -737,7 +1055,7 @@ var animSetPreset = function( preset, animPhase, control ){
 
 let animSetRandom = function( animPhase, control ){
 	return function(){
-				animCurrent[animPhase] = 'Random';
+				animCurrent[animPhase].preset = 'Random';
 				control.title.innerHTML = 'Random';
 				clearTimeout(previewImgTimeout);
 				activeModal.remove();
@@ -769,10 +1087,11 @@ let createPresetsPicker = function(collection, animPhase, control){
 
 		let pickerModal = document.createElement('section');
 		let pickerModalTitleWrapper = document.createElement('div');
+		let scrollContainer = document.createElement('div');
 
 		pickerModal.classList.add('anim-presets-picker');
+		scrollContainer.classList.add('scroll-container');
 		
-
 		console.log( pickerModal.scrollTop );
 		console.log( pickerModalScrollOffset[animPhase] );
 		
@@ -817,7 +1136,7 @@ let createPresetsPicker = function(collection, animPhase, control){
 
 		presetsGroupWrapper.appendChild(presetsGroupTitle);
 		presetsGroupWrapper.appendChild(gridContainer);
-		pickerModal.appendChild(presetsGroupWrapper);
+		scrollContainer.appendChild(presetsGroupWrapper);
 
 		for(let i = 1; i < collection.length; i++ ){
 
@@ -828,24 +1147,37 @@ let createPresetsPicker = function(collection, animPhase, control){
 			gridContainer.classList.add('grid-container');
 			presetsGroupTitle.classList.add('anim-presets-group-title');
 			presetsGroupTitle.innerHTML = collection[i].title;
-			presetsGroupWrapper.classList.add('anim-presets-picker-group');
-			
+			presetsGroupWrapper.classList.add('anim-presets-picker-group');	
 
 			for(let j = 0; j < collection[i].presets.length; j++){
 
 				let presetItem = document.createElement('div');
 				let presetItemTitle = document.createElement('span');
+				let presetItemTitleWrapper = document.createElement('div');
 				let presetItemPreviewContainer = document.createElement('div');
 				let presetItemPreviewImg = document.createElement('img');
 				let presetItemProgressBar = document.createElement('div');
+
+				let animDuration = '1s';
+
+				if('duration' in collection[i].presets[j]){
+					animDuration = collection[i].presets[j].duration;
+				}
 
 				presetItemTitle.innerHTML = collection[i].presets[j].title;
 				presetItemPreviewImg.src = "img/" + collection[i].previewSample;
 				presetItem.classList.add('anim-presets-picker-item');
 				presetItemProgressBar.classList.add('anim-preview-progress-bar');
 
+				presetItemProgressBar.style.backgroundColor = collection[i].color;
+
+				presetItemTitle.style.color = collection[i].color;
+				presetItemTitle.classList.add('anim-preset-picker-item-title');
+				presetItemTitleWrapper.classList.add('anim-preset-picker-item-title-wrapper');
+
 				switch (animPhase) {
 					case 'appearance':
+
 						presetItem.onmouseenter =  function(){ 
 							presetItemPreviewImg.style.animationName = collection[i].presets[j].anim;
 							previewImgTimeout = setTimeout( function previewAnimDelay(){ 
@@ -862,7 +1194,7 @@ let createPresetsPicker = function(collection, animPhase, control){
 							clearTimeout(previewImgTimeout);
 						}
 
-						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j].anim, 'appearance', control ));
+						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j].anim, collection[i].presets[j].title, 'appearance', control, animDuration ));
 
 
 						break;
@@ -879,7 +1211,7 @@ let createPresetsPicker = function(collection, animPhase, control){
 							presetItemPreviewImg.style.animationName = '';
 						}
 
-						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j].anim, 'move', control ));
+						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j].anim, collection[i].presets[j].title, 'move', control, animDuration ));
 
 						break;
 
@@ -901,7 +1233,7 @@ let createPresetsPicker = function(collection, animPhase, control){
 							clearTimeout(previewImgTimeout);
 						}
 
-						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j].anim, 'fade', control ));
+						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j].anim, collection[i].presets[j].title, 'fade', control, animDuration ));
 
 						break;
 
@@ -914,17 +1246,13 @@ let createPresetsPicker = function(collection, animPhase, control){
 				
 
 				
-
+				presetItemTitleWrapper.appendChild(presetItemTitle);
 				presetItemPreviewContainer.appendChild(presetItemPreviewImg);
-
+				presetItemPreviewContainer.appendChild(presetItemProgressBar);
 				presetItem.appendChild(presetItemPreviewContainer);
-				presetItem.appendChild(presetItemProgressBar);
-				presetItem.appendChild(presetItemTitle);
-				
+				presetItem.appendChild(presetItemTitleWrapper);
 
 				gridContainer.appendChild(presetItem);
-
-				
 
 				
 			}
@@ -932,12 +1260,13 @@ let createPresetsPicker = function(collection, animPhase, control){
 
 			presetsGroupWrapper.appendChild(presetsGroupTitle);
 			presetsGroupWrapper.appendChild(gridContainer);
-			pickerModal.appendChild(presetsGroupWrapper);
+			scrollContainer.appendChild(presetsGroupWrapper);
+			
 
 		}
 
-		
 		activeModal = pickerModal;
+		pickerModal.appendChild(scrollContainer);
 		pickerModal.prepend(pickerModalTitleWrapper);
 		document.body.prepend(pickerModal);
 
@@ -986,7 +1315,7 @@ let createAnimControl = function( parentElem, animPhase, pickerTitle, collection
 		previewProgressBar.classList.add('anim-preview-progress-bar');
 
 		previewWrapper.onmouseenter = function() {
-			previewImage.style.animationName = animCurrent[animPhase] + '-preview';
+			previewImage.style.animationName = animCurrent[animPhase].preset + '-preview';
 		}
 
 		previewWrapper.onmouseleave = function() {
@@ -998,8 +1327,8 @@ let createAnimControl = function( parentElem, animPhase, pickerTitle, collection
 			if(!this.checked){
 				clearTimeout(animRemoveTimeout);
 				clearTimeout(animCycleTimeout);
-				animDisabledStorage[animPhase] = animCurrent[animPhase];
-				animCurrent[animPhase] = '';
+				animDisabledStorage[animPhase] = animCurrent[animPhase].preset;
+				animCurrent[animPhase].preset = '';
 				previewImageRandom.style.display = 'none';
 				previewImage.style.display = 'none';
 				title.innerHTML = 'Disabled';
@@ -1013,13 +1342,13 @@ let createAnimControl = function( parentElem, animPhase, pickerTitle, collection
 			else{
 				clearTimeout(animRemoveTimeout);
 				clearTimeout(animCycleTimeout);
-				animCurrent[animPhase] = animDisabledStorage[animPhase];
-				title.innerHTML = animCurrent[animPhase];
+				animCurrent[animPhase].preset = animDisabledStorage[animPhase];
+				title.innerHTML = animCurrent[animPhase].preset;
 				title.style.opacity = '1';
 				preview.style.opacity = '1';
 				previewPlaceholder.style.display = 'none';
 				
-				if(animCurrent[animPhase] != 'Random'){
+				if(animCurrent[animPhase].preset != 'Random'){
 
 					previewImage.style.display = 'block';
 					previewProgressBar.style.display = 'block';
