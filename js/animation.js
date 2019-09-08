@@ -6,6 +6,7 @@ let moveTimingFunc = 'ease';
 let moveTimingFuncRadios = document.getElementsByClassName('timing-func-radio');
 
 let moveWavesRadios = document.getElementsByClassName('move-waves-radio');
+let appearanceModeRadios = document.getElementsByClassName('appearance-style-radio');
 
 //let previewProgressBarFill = document.getElementById('preview-progress-bar-fill');
 let preview1080 = document.getElementById('preview-1920-1080');
@@ -25,7 +26,7 @@ let alert_5;
 
 
 
-function renderPreview(parentContainer, parentWidth, parentHeight){
+function renderPreview(parentContainer, animConfig){
 
 	let appearanceContainer = document.createElement('div');
 	let moveContainer = document.createElement('div');
@@ -35,10 +36,27 @@ function renderPreview(parentContainer, parentWidth, parentHeight){
 	let wavesXContainer = document.createElement('div');
 	let baseContainer = document.createElement('div');
 
+	let tipperName = document.createElement('span');
+	let tipAmount = document.createElement('span');
+	let customMessage = document.createElement('p');
+
 	let fadeDuration = parseFloat(animCurrent.fade.duration) * 1000;
 
-	appearanceContainer.style.animationName = animCurrent.appearance.preset;
-	appearanceContainer.style.animationDuration = animCurrent.appearance.duration;
+	tipAmount.innerHTML = '100';
+	tipAmount.id = 'tip-amount';
+	
+	tipAmount.style.animationDuration = '1s';
+
+	tipperName.innerHTML = 'TipAlerts';
+	tipperName.id = 'tipper-name';
+	
+	tipperName.style.animationDuration = '1s';
+
+	customMessage.innerHTML = 'Thank you!';
+	customMessage.id = 'custom-message';
+	
+	customMessage.style.animationDuration = '1s';
+
 	appearanceContainer.style.position = 'absolute';
 	appearanceContainer.style.left = '0%';
 	appearanceContainer.style.top = '0%';
@@ -46,10 +64,40 @@ function renderPreview(parentContainer, parentWidth, parentHeight){
 	appearanceContainer.style.height = '144px';
 	appearanceContainer.style.boxSizing = 'border-box';
 	appearanceContainer.style.transformOrigin = '72px 72px 0px';
-	//appearanceContainer.style.border = '3px dashed gold';
 
-	moveContainer.style.animationName = animCurrent.move.preset;
-	moveContainer.style.animationDuration = animDuration / 1000 + 's';
+	if(animConfig['appearance'].enabled){
+		appearanceContainer.style.animationName = animConfig['appearance'].preset.anim;
+		appearanceContainer.style.animationDuration = animCurrent.appearance.duration;
+
+		if(animConfig['appearance'].mode == '2'){
+
+				tipAmount.style.display = 'none';
+				tipperName.style.display = 'none';
+				customMessage.style.display = 'none';
+
+				setTimeout(() => { 
+									tipAmount.style.display = 'block';
+									tipAmount.style.animationName = animConfig['appearance'].preset.anim;
+					}, 200);
+
+				setTimeout(() => { 
+									tipperName.style.display = 'block';
+									tipperName.style.animationName = animConfig['appearance'].preset.anim;
+					}, 400);
+
+				setTimeout(() => { 
+									customMessage.style.display = 'block';
+									customMessage.style.animationName = animConfig['appearance'].preset.anim;
+					}, 600);		
+		}
+
+		else{
+				tipAmount.style.display = 'block';
+				tipperName.style.display = 'block';
+				customMessage.style.display = 'block';
+			}
+	}
+
 	moveContainer.style.position = 'absolute';
 	moveContainer.style.left = 'calc(50% - 72px)';
 	moveContainer.style.top = 'calc(50% - 72px)';
@@ -58,21 +106,24 @@ function renderPreview(parentContainer, parentWidth, parentHeight){
 	moveContainer.style.width = '100%';
 	moveContainer.style.height = '100%';
 	moveContainer.classList.add('move-container');
-	//moveContainer.style.backgroundColor = 'green';
 
-	fadeContainer.style.animationName = animCurrent.fade.preset;
-	fadeContainer.style.animationDuration = animCurrent.fade.duration;
+	if(animConfig['move'].enabled){
+		moveContainer.style.animationName = animConfig['move'].preset.anim;
+		moveContainer.style.animationDuration = animDuration / 1000 + 's';
+	}
+
+	if(animConfig['fade'].enabled){
+		fadeContainer.style.animationName = animConfig['fade'].preset.anim;
+		fadeContainer.style.animationDuration = animCurrent.fade.duration;
+		fadeContainer.style.animationDelay = (animDuration - fadeDuration) / 1000 + 's';
+	}
 	
-	fadeContainer.style.animationDelay = (animDuration - fadeDuration) / 1000 + 's';
 	fadeContainer.style.transformOrigin = '72px 72px 0px';
 	fadeContainer.style.position = 'absolute';
-	// fadeContainer.style.display = 'flex';
-	// fadeContainer.style.justifyContent = 'flex-start';
-	// fadeContainer.style.alignItems = 'flex-start';
+
 	fadeContainer.style.width = '100%';
 	fadeContainer.style.height = '100%';
 	fadeContainer.style.boxSizing = 'border-box';
-	//fadeContainer.style.border = '3px solid red';
 
 	fadeCenterContainer.style.position = 'absolute';
 	fadeCenterContainer.style.width = '100%';
@@ -90,6 +141,10 @@ function renderPreview(parentContainer, parentWidth, parentHeight){
 	wavesXContainer.style.animationName = animCurrent.waves;
 
 	baseContainer.classList.add('preview-image');
+
+	baseContainer.appendChild(tipAmount);
+	baseContainer.appendChild(tipperName);
+	baseContainer.appendChild(customMessage);
 
 	wavesXContainer.appendChild(baseContainer);
 	fadeCenterContainer.appendChild(wavesXContainer);
@@ -116,11 +171,11 @@ function renderPreview(parentContainer, parentWidth, parentHeight){
 }
 
 function createAlerts(){
-	alert_1 = renderPreview(preview720, 1280, 720);
-	alert_2 = renderPreview(preview600, 800, 600);
-	alert_3 = renderPreview(preview480, 640, 480);
-	alert_4 = renderPreview(preview900, 1440, 900);
-	alert_5 = renderPreview(preview1080, 1920, 1080);
+	alert_1 = renderPreview(preview720, animConfig);
+	alert_2 = renderPreview(preview600, animConfig);
+	alert_3 = renderPreview(preview480, animConfig);
+	alert_4 = renderPreview(preview900, animConfig);
+	alert_5 = renderPreview(preview1080, animConfig);
 }
 
 function removeAlerts(){
@@ -162,6 +217,16 @@ for(let i = 0; i < moveTimingFuncRadios.length; i++){
 for(let i = 0; i < moveWavesRadios.length; i++){
 	moveWavesRadios[i].onchange = function(){
 		animCurrent.waves = this.value;
+		resetAnim();
+	}
+}
+
+//console.log(appearanceModeRadios);
+
+for(i = 0; i < appearanceModeRadios.length; i++){
+	
+	appearanceModeRadios[i].onchange = function(){
+		animConfig['appearance'].mode = this.value;
 		resetAnim();
 	}
 }

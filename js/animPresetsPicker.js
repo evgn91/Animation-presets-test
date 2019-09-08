@@ -1,25 +1,5 @@
 console.log('animPresetsPicker.js');
 
-let colors = {
-				red: '#ff5252',
-				pink: '#ff4081',
-				purple: '#e040fb',
-				deepPurple: '#7c4dff',
-				indigo: '#536dfe',
-				blue: '#448aff',
-				lightBlue: '#40c4ff',
-				cyan: '#18ffff',
-				teal: '#64ffda',
-				green: '#69f0ae',
-				lightGreen: '#b2ff59',
-				lime: '#eeff41',
-				yellow: '#ffff00',
-				amber: '#ffd740',
-				orange: '#ffab40',
-				deepOrange: '#ff6e40',
-
-}
-
 let appearancePresetsNew = ['Select appearance animation',
 							
 							{
@@ -980,6 +960,8 @@ let animCurrent = {
 					waves: ''
 };
 
+
+
 let animDisabledStorage = {
 							appearance: '',
 							move: '',
@@ -1032,21 +1014,27 @@ let previewImgTimeout;
 let activeModal;
 let activePicker;
 
-var animSetPreset = function( preset, title, animPhase, control, duration ){
+var animSetPreset = function( preset, animPhase, control, duration, pickerIndex ){
 
 	return function(){
+
 
 				clearTimeout(animRemoveTimeout);
 				clearTimeout(animCycleTimeout);
 
-				animCurrent[animPhase].preset = preset;
+				animConfig[animPhase].preset = preset;
+				animConfig[animPhase].pickerIndex = pickerIndex;
+
+				console.log(pickerIndex);
+
 				if( duration && animPhase != 'move' ){
-					animCurrent[animPhase].duration = duration;
+					animConfig[animPhase].duration = duration;
 				}
 				else if( animPhase != 'move' ){
-					animCurrent[animPhase].duration = '1s';	
+					animConfig[animPhase].duration = '1s';	
 				}
-				control.title.innerHTML = title;
+
+				control.title.innerHTML = preset.title;
 				clearTimeout(previewImgTimeout);
 				activeModal.remove();
 				activeModal = null;
@@ -1065,8 +1053,7 @@ var animSetPreset = function( preset, title, animPhase, control, duration ){
 
 				}
 
-				removeAlerts();
-				animCycle();
+				resetAnim();
 
 				setTimeout( () => {window.removeEventListener('click', closeModal);}, 1);
 			}
@@ -1097,23 +1084,29 @@ let animSetRandom = function( animPhase, control ){
 			}
 }
 
-let createPresetsPicker = function(collection, animPhase, control){
+let renderPresetsPicker = function(parentElem, collection, animPhase, control, animCfg){
+
 	return function(){
 
 		console.log('CREATE PICKER');
 
 
-		activePicker = event.target;
+		//activeControl = control.elem;
+		//console.log(control.elem);
+		//console.log(activeControl);
+
+		//activeControl.removeEventListener('click', renderPresetsPicker);
 
 		let pickerModal = document.createElement('section');
 		let pickerModalTitleWrapper = document.createElement('div');
 		let scrollContainer = document.createElement('div');
+		let indexCount = 0;
 
 		pickerModal.classList.add('anim-presets-picker');
 		scrollContainer.classList.add('scroll-container');
 		
-		console.log( pickerModal.scrollTop );
-		console.log( pickerModalScrollOffset[animPhase] );
+		//console.log( pickerModal.scrollTop );
+		//console.log( pickerModalScrollOffset[animPhase] );
 		
 		// pickerModal.onclick = function() {
 		// 	pickerModal.scrollTop = pickerModalScrollOffset[animPhase];
@@ -1140,7 +1133,7 @@ let createPresetsPicker = function(collection, animPhase, control){
 		let presetItemTitle = document.createElement('span');
 		let presetItemTitleWrapper = document.createElement('div');
 		let presetItemPreviewContainer = document.createElement('div');
-		let presetItemPreviewImg = document.createElement('div');
+		let presetItemPreviewImg = document.createElement('img');
 
 		presetItemTitle.innerHTML = 'Random';
 		presetItemPreviewImg.src = "img/preview-random.png";
@@ -1178,6 +1171,7 @@ let createPresetsPicker = function(collection, animPhase, control){
 
 			for(let j = 0; j < collection[i].presets.length; j++){
 
+				indexCount++;
 				let presetItem = document.createElement('div');
 				let presetItemTitle = document.createElement('span');
 				let presetItemTitleWrapper = document.createElement('div');
@@ -1208,11 +1202,38 @@ let createPresetsPicker = function(collection, animPhase, control){
 				presetItemPreviewImg.classList.add('anim-presets-picker-item-preview-image');
 				presetItemPreviewContainer.classList.add('anim-preset-picker-item-preview-wrapper');
 
+				if( indexCount == animCfg[animPhase].pickerIndex ){
+							presetItemPreviewContainer.style.backgroundColor = collection[i].color;
+							presetItemTitleWrapper.style.backgroundColor = collection[i].color;
+							presetItemTitle.style.color = '#131b20';
+							presetItemProgressBar.style.backgroundColor = '#131b20';
+							presetItemPreviewImg.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="33" height="31" viewBox="0 0 33 31" fill="none">
+				<path d="M30.2031 2.89745C26.474 -0.965815 20.4278 -0.965815 16.6986 2.89745L16.5 3.10319L16.3014 2.89745C12.5722 -0.965816 6.52605 -0.965815 2.79688 2.89745C-0.932292 6.76071 -0.932293 13.0243 2.79688 16.8876L16.5565 31L30.2031 16.8876C33.9323 13.0243 33.9323 6.76071 30.2031 2.89745Z" fill="#131b20"/>
+				</svg>`;
+
+						}
+
 				switch (animPhase) {
 					case 'appearance':
 
-						presetItem.onmouseenter =  function(){ 
-							presetItemPreviewImg.style.animationName = collection[i].presets[j].anim;
+						presetItem.onmouseenter = function(){ 
+
+							presetItemPreviewImg.style.animationName = collection[i].presets[j].anim + '-preview';
+
+							if('duration' in collection[i].presets[j]){
+								presetItemPreviewImg.style.animationDuration = collection[i].presets[j].duration;
+								console.log('CUSTOM PREVIEW DURATION');
+							}
+							else{
+								console.log('DEFAULT PREVIEW DURATION');
+								presetItemPreviewImg.style.animationDuration = '1s';
+							}
+
+							if('timingFunction' in collection[i].presets[j]){
+								presetItemPreviewImg.style.animationTimingFunction = collection[i].presets[j].timingFunction;
+							}
+							
+							console.log( collection[i].presets[j].anim );
 							previewImgTimeout = setTimeout( function previewAnimDelay(){ 
 								presetItemPreviewImg.style.animationName = '';
 								previewImgTimeout = setTimeout(() => {
@@ -1224,10 +1245,11 @@ let createPresetsPicker = function(collection, animPhase, control){
 
 						presetItem.onmouseleave =  function(){ 
 							presetItemPreviewImg.style.animationName = '';
+							presetItemPreviewImg.style.animationDuration = '';
 							clearTimeout(previewImgTimeout);
 						}
 
-						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j].anim, collection[i].presets[j].title, 'appearance', control, animDuration ));
+						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j], 'appearance', control, animDuration, indexCount ));
 
 
 						break;
@@ -1244,14 +1266,23 @@ let createPresetsPicker = function(collection, animPhase, control){
 							presetItemPreviewImg.style.animationName = '';
 						}
 
-						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j].anim, collection[i].presets[j].title, 'move', control, animDuration ));
+						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j], 'move', control, animDuration, indexCount ));
 
 						break;
 
 					case 'fade':
 
 						presetItem.onmouseenter =  function(){
-							//presetItemPreviewImg.style.animationName = presets[i].presets[j];
+
+							presetItemPreviewImg.style.animationName = collection[i].presets[j].anim + '-preview';
+
+							if('duration' in collection[i].presets[j]){
+								presetItemPreviewImg.style.animationDuration = collection[i].presets[j].duration;
+							}
+							else{
+								presetItemPreviewImg.style.animationDuration = '1s';
+							}
+							
 							previewImgTimeout = setTimeout( function previewAnimDelay(){ 
 								presetItemPreviewImg.style.animationName = collection[i].presets[j].anim + '-preview';
 								previewImgTimeout = setTimeout(() => {
@@ -1266,26 +1297,33 @@ let createPresetsPicker = function(collection, animPhase, control){
 							clearTimeout(previewImgTimeout);
 						}
 
-						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j].anim, collection[i].presets[j].title, 'fade', control, animDuration ));
+						console.log(indexCount);
+
+						presetItem.addEventListener('click', animSetPreset( collection[i].presets[j], 'fade', control, animDuration, indexCount ));
 
 						break;
 
 
 					default:
-						// statements_def
+
 						break;
 				}
 
-				
-
+				// presetItem.style.opacity = '0';
+				// presetItem.style.animationFillMode = 'forwards';
+				// presetItem.style.animationName = 'pickerAppearance';
+				// presetItem.style.animationDuration = '.2s';
+				// presetItem.style.animationDelay = i + '.' + j + 's';
 				
 				presetItemTitleWrapper.appendChild(presetItemTitle);
 				presetItemPreviewContainer.appendChild(presetItemPreviewImg);
 				presetItemPreviewContainer.appendChild(presetItemProgressBar);
 				presetItem.appendChild(presetItemPreviewContainer);
 				presetItem.appendChild(presetItemTitleWrapper);
-				// gridContainer.appendChild(presetItemPreviewImg);
+
 				gridContainer.appendChild(presetItem);
+
+
 
 				
 			}
@@ -1293,6 +1331,7 @@ let createPresetsPicker = function(collection, animPhase, control){
 
 			presetsGroupWrapper.appendChild(presetsGroupTitle);
 			presetsGroupWrapper.appendChild(gridContainer);
+			// presetsGroupWrapper.style.animationName = 'pickerGroupAppearance';
 			scrollContainer.appendChild(presetsGroupWrapper);
 			
 
@@ -1303,7 +1342,8 @@ let createPresetsPicker = function(collection, animPhase, control){
 		pickerModal.prepend(pickerModalTitleWrapper);
 		pickerModal.style.animationDuration = '.2s';
 		pickerModal.style.animationName = 'pickerAppearance';
-		document.body.prepend(pickerModal);
+		parentElem.prepend(pickerModal);
+		//document.body.prepend(pickerModal);
 
 		scrollContainer.scrollTop = pickerModalScrollOffset[animPhase];
 		setTimeout(() => {window.addEventListener('click', closeModal);}, 1);
@@ -1311,7 +1351,7 @@ let createPresetsPicker = function(collection, animPhase, control){
 	}
 }
 
-let createAnimControl = function( parentElem, animPhase, pickerTitle, collection, configDefault ) {
+let createAnimControl = function( parentElem, animPhase, pickerTitle, presets, configDefault ) {
 		
 		console.log('Creating control');
 		let itemWrapper = document.createElement( 'div' );
@@ -1357,46 +1397,46 @@ let createAnimControl = function( parentElem, animPhase, pickerTitle, collection
 			previewImage.style.animationName = '';
 		}
 
-		checkboxInput.onchange = function() {
-			console.log('checkbox change');
-			if(!this.checked){
-				clearTimeout(animRemoveTimeout);
-				clearTimeout(animCycleTimeout);
-				animDisabledStorage[animPhase] = animCurrent[animPhase].preset;
-				animCurrent[animPhase].preset = '';
-				previewImageRandom.style.display = 'none';
-				previewImage.style.display = 'none';
-				title.innerHTML = 'Disabled';
-				title.style.opacity = '.54';
-				preview.style.opacity = '.34';
-				previewProgressBar.style.display = 'none';
-				previewPlaceholder.style.display = 'block';
-				removeAlerts();
-				animCycle();
-			}
-			else{
-				clearTimeout(animRemoveTimeout);
-				clearTimeout(animCycleTimeout);
-				animCurrent[animPhase].preset = animDisabledStorage[animPhase];
-				title.innerHTML = animCurrent[animPhase].preset;
-				title.style.opacity = '1';
-				preview.style.opacity = '1';
-				previewPlaceholder.style.display = 'none';
+		// checkboxInput.onchange = function() {
+		// 	console.log('checkbox change');
+		// 	if(!this.checked){
+		// 		clearTimeout(animRemoveTimeout);
+		// 		clearTimeout(animCycleTimeout);
+		// 		animDisabledStorage[animPhase] = animCurrent[animPhase].preset;
+		// 		animCurrent[animPhase].preset = '';
+		// 		previewImageRandom.style.display = 'none';
+		// 		previewImage.style.display = 'none';
+		// 		title.innerHTML = 'Disabled';
+		// 		title.style.opacity = '.54';
+		// 		preview.style.opacity = '.34';
+		// 		previewProgressBar.style.display = 'none';
+		// 		previewPlaceholder.style.display = 'block';
+		// 		removeAlerts();
+		// 		animCycle();
+		// 	}
+		// 	else{
+		// 		clearTimeout(animRemoveTimeout);
+		// 		clearTimeout(animCycleTimeout);
+		// 		animCurrent[animPhase].preset = animDisabledStorage[animPhase];
+		// 		title.innerHTML = animCurrent[animPhase].preset;
+		// 		title.style.opacity = '1';
+		// 		preview.style.opacity = '1';
+		// 		previewPlaceholder.style.display = 'none';
 				
-				if(animCurrent[animPhase].preset != 'Random'){
+		// 		if(animCurrent[animPhase].preset != 'Random'){
 
-					previewImage.style.display = 'block';
-					previewProgressBar.style.display = 'block';
+		// 			previewImage.style.display = 'block';
+		// 			previewProgressBar.style.display = 'block';
 					
-				}
-				else{
-					previewImageRandom.style.display = 'block';
-				}
+		// 		}
+		// 		else{
+		// 			previewImageRandom.style.display = 'block';
+		// 		}
 
-				removeAlerts();
-				animCycle();
-			}
-		}; 
+		// 		removeAlerts();
+		// 		animCycle();
+		// 	}
+		// }; 
 
 		titleWrapper.classList.add('anim-preset-title-wrapper');
 		title.innerHTML = configDefault.preset;
@@ -1432,14 +1472,16 @@ let createAnimControl = function( parentElem, animPhase, pickerTitle, collection
 
 		//controlTitle = title;
 
-		previewWrapper.addEventListener( 'click', createPresetsPicker( collection, animPhase, control ) );
+		checkboxInput.addEventListener('change', () => {return switchAnimState(control, animConfig, animPhase, checkboxInput)});
+		previewWrapper.addEventListener( 'click', renderPresetsPicker( document.body, presets, animPhase, control, animConfig ) );
+
 
 		return control;
 }
 
-let appearanceAnimControl = createAnimControl( animPickersWrapper, 'appearance', 'Appearance', appearancePresetsNew, animAppearanceDefault );
-let moveAnimControl = createAnimControl( animPickersWrapper, 'move', 'Move', movePresetsNew, animMoveDefault );
-let fadeAnimControl = createAnimControl( animPickersWrapper, 'fade', 'Fade', fadePresetsNew, animFadeDefault );
+let appearanceAnimControl = createAnimControl( animPickersWrapper, 'appearance', 'Appearance', appearancePresets, animAppearanceDefault );
+let moveAnimControl = createAnimControl( animPickersWrapper, 'move', 'Move', movePresets, animMoveDefault );
+let fadeAnimControl = createAnimControl( animPickersWrapper, 'fade', 'Fade', fadePresets, animFadeDefault );
 
 let closeModal = function(){
 	//console.log(event.target);
@@ -1460,6 +1502,51 @@ let closeModal = function(){
 	}
 }
 
+function switchAnimState(control, animCfg, animPhase, checkbox){
+				
+				if(checkbox.checked){
+
+						animCfg[animPhase].enabled = true;
+						control.title.innerHTML = animCfg[animPhase].preset.title;
+						control.title.style.opacity = '1';
+						control.preview.style.opacity = '1';
+						control.placeholder.style.display = 'none';
+
+						if(animCfg[animPhase].preset.anim != 'random'){
+
+							
+							
+							
+							
+							control.image.style.display = 'block';
+
+						}
+
+						else{
+							control.imageRandom.style.display = 'block';
+						}
+
+						resetAnim();
+
+				}
+
+				else{		
+							console.log( animCfg[animPhase] );
+							animCfg[animPhase].enabled = false;
+							resetAnim();
+
+							control.imageRandom.style.display = 'none';
+							control.image.style.display = 'none';
+							control.title.innerHTML = 'Disabled';
+							control.title.style.opacity = '.54';
+							control.preview.style.opacity = '.34';
+							control.progressBar.style.display = 'none';
+							control.placeholder.style.display = 'block';
+
+						}
+						
+
+}
 
 // animAppearancePicker.addEventListener('click', createPresetsPicker( appearancePresets, 'appearance' ) );
 // animMovePicker.addEventListener('click', createPresetsPicker( movementPresets, 'move' ) );

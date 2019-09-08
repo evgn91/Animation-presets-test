@@ -1,3 +1,36 @@
+.preview-image{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	position: relative;
+}
+
+#tip-amount{
+	font-size: 36px;
+	font-weight: 800;
+	position: absolute;
+	top: 50%;
+	animation-fill-mode: forwards;
+}
+
+#tipper-name{
+	font-size: 20px;
+	font-weight: 600;
+	color: #FFB65A;
+	position: absolute;
+	top: 0px;
+	animation-fill-mode: forwards;
+}
+
+#custom-message{
+	font-size: 18px;
+	font-weight: 400;
+	position: absolute;
+	top: 80%;
+	animation-fill-mode: forwards;
+}
+
 .animation-timeline{
 	display: flex;
 	flex-direction: column;
